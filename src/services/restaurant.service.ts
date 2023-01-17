@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {Restaurant} from '../models/Restaurant';
 
@@ -18,4 +18,12 @@ export class RestaurantService {
 
   constructor(private http: HttpClient) { this.apiUrl = 'http://localhost:5162/'; }
 
+  public getRestaurants(): Observable<Restaurant[]> {
+    return this.http.get<Restaurant[]>(`${ this.apiUrl }restaurants`)
+      .pipe(
+        map(response => response.map(restaurant => {
+          return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Score, restaurant.Grade);
+        }))
+      );
+  }
 }

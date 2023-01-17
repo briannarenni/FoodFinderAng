@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MenuItem } from '../models/MenuItem';
 
@@ -11,7 +11,6 @@ import { MenuItem } from '../models/MenuItem';
 export class MenuService {
   apiUrl: string;
   cuisines?: ['american', 'chinese', 'greek', 'italian', 'mexican', 'thai'];
-  restName?: string;
   restCuisine?: string;
   menuItems?: MenuItem[];
 
