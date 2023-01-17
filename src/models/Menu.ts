@@ -1,4 +1,3 @@
-// CUISINES: American, Chinese, Greek, Italian, Mexican, Thai
 export class Menu {
     itemId: number;
     cuisine: string;

@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 
 export class MenuService {
+  cuisines!: ['american', 'chinese', 'greek', 'italian', 'mexican', 'thai'];
 
   constructor() { }
 
