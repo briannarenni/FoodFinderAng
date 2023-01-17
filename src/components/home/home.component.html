@@ -5,18 +5,18 @@
       <th scope="col">Cuisine</th>
       <th scope="col">City</th>
       <th scope="col">Rating</th>
-      <th scope="col">Score</th>
+      <th scope="col">Grade</th>
       <th scope="col"></th> <!-- See Menu Btn -->
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>BBQ Banquet Cuisine Rocking</td>
-      <td>American</td>
-      <td>Orlando</td>
-      <td>85</td>
-      <td>B</td>
-      <td><button class="see-menu" class="btn btn-sm btn-primary">See Menu</button></td>
+    <tr *ngFor="let restaurant of restaurants">
+      <td>{{restaurant.RestName}}</td>
+      <td>{{restaurant.Cuisine}}</td>
+      <td>{{restaurant.City}}</td>
+      <td>{{restaurant.Rating}}</td>
+      <td>{{restaurant.Grade}}</td>
+      <td><button class="see-menu" class="btn btn-sm btn-primary">Menu</button></td>
     </tr>
   </tbody>
 </table>

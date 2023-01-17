@@ -17,14 +17,16 @@ export class HomeComponent implements OnInit {
   constructor(private menuService: MenuService, private restService: RestaurantService) { }
 
   ngOnInit() {
-  }
-
-  getMenu() {
-    this.menuService.getCuisineMenu('american').subscribe(menuItems => this.menuItems = menuItems);
+    this.getRestaurants();
+    this.getMenu();
   }
 
   getRestaurants() {
     this.restService.getRestaurants().subscribe(restaurants => this.restaurants = restaurants);
+  }
+
+  getMenu() {
+    this.menuService.getCuisineMenu('american').subscribe(menuItems => this.menuItems = menuItems);
   }
 
   filterByCuisine(cuisine: string) {
@@ -44,11 +46,3 @@ export class HomeComponent implements OnInit {
   }
 
 }
-
- // sortByHighestScore() {
-  //   this.restService.sortByHighestScore().subscribe(restaurants => this.restaurants = restaurants);
-  // }
-
-  // sortByLowestScore() {
-  //   this.restService.sortByLowestScore().subscribe(restaurants => this.restaurants = restaurants);
-  // }

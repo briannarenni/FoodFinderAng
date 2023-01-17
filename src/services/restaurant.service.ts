@@ -22,7 +22,7 @@ export class RestaurantService {
     return this.http.get<Restaurant[]>(`${ this.apiUrl }restaurants`)
       .pipe(
         map(response => response.map(restaurant => {
-          return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Score, restaurant.Grade);
+          return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Grade, restaurant.Rating);
         }))
       );
   }
@@ -32,7 +32,7 @@ export class RestaurantService {
     return this.http.get<Restaurant[]>(`${ this.apiUrl }restaurants/cuisine`, { params })
       .pipe(
         map(response => response.map(restaurant => {
-          return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Score, restaurant.Grade);
+          return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Grade, restaurant.Rating);
         }))
       );
   }
@@ -42,7 +42,7 @@ export class RestaurantService {
     return this.http.get<Restaurant[]>(`${ this.apiUrl }restaurants/city`, { params })
       .pipe(
         map(response => response.map(restaurant => {
-          return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Score, restaurant.Grade);
+          return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Grade, restaurant.Rating);
         }))
       );
   }
@@ -51,7 +51,7 @@ export class RestaurantService {
     return this.http.get<Restaurant[]>(`${ this.apiUrl }restaurants/rating`)
       .pipe(
         map(response => response.map(restaurant => {
-          return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Score, restaurant.Grade);
+          return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Grade, restaurant.Rating);
         }))
       );
   }
@@ -60,27 +60,10 @@ export class RestaurantService {
     return this.http.get<Restaurant[]>(`${ this.apiUrl }restaurants/rating-low`)
       .pipe(
         map(response => response.map(restaurant => {
-          return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Score, restaurant.Grade);
+          return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Grade, restaurant.Rating);
         }))
       );
   }
 
 }
 
-  // public sortByHighestGrade(): Observable<Restaurant[]> {
-  //   return this.http.get<Restaurant[]>(`${ this.apiUrl }restaurants/grade`)
-  //     .pipe(
-  //       map(response => response.map(restaurant => {
-  //         return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Score, restaurant.Grade);
-  //       }))
-  //     );
-  // }
-
-  // public sortByLowestGrade(): Observable<Restaurant[]> {
-  //   return this.http.get<Restaurant[]>(`${ this.apiUrl }restaurants/grade-low`)
-  //     .pipe(
-  //       map(response => response.map(restaurant => {
-  //         return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Score, restaurant.Grade);
-  //       }))
-  //     );
-  // }
