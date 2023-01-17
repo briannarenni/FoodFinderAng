@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {HomeComponent} from '../components/home/home.component';
-import {NavBarComponent} from '../components/navbar/navbar.component';
+import {HomeComponent} from './home/home.component';
+import {MenuPageComponent} from './menu-page/menu-page.component';
 
 @NgModule({
 	imports: [
 		CommonModule,
 	],
-	declarations: [HomeComponent, NavBarComponent],
-	exports: [HomeComponent, NavBarComponent]
+	declarations: [HomeComponent, MenuPageComponent],
+	exports: [HomeComponent, MenuPageComponent]
 })
 
 export class ComponentsModule { }
