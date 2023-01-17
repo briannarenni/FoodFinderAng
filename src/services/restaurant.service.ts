@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import {Restaurant} from '../models/Restaurant';
+import { Restaurant } from '../models/Restaurant';
 
 @Injectable({
   providedIn: 'root'
@@ -26,4 +26,61 @@ export class RestaurantService {
         }))
       );
   }
+
+  public filterByCuisine(cuisine: string): Observable<Restaurant[]> {
+    const params = new HttpParams().set('cuisine', cuisine);
+    return this.http.get<Restaurant[]>(`${ this.apiUrl }restaurants/cuisine`, { params })
+      .pipe(
+        map(response => response.map(restaurant => {
+          return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Score, restaurant.Grade);
+        }))
+      );
+  }
+
+  public filterByCity(city: string): Observable<Restaurant[]> {
+    const params = new HttpParams().set('city', city);
+    return this.http.get<Restaurant[]>(`${ this.apiUrl }restaurants/city`, { params })
+      .pipe(
+        map(response => response.map(restaurant => {
+          return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Score, restaurant.Grade);
+        }))
+      );
+  }
+
+  public sortByHighestRating(): Observable<Restaurant[]> {
+    return this.http.get<Restaurant[]>(`${ this.apiUrl }restaurants/rating`)
+      .pipe(
+        map(response => response.map(restaurant => {
+          return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Score, restaurant.Grade);
+        }))
+      );
+  }
+
+  public sortByLowestRating(): Observable<Restaurant[]> {
+    return this.http.get<Restaurant[]>(`${ this.apiUrl }restaurants/rating-asc`)
+      .pipe(
+        map(response => response.map(restaurant => {
+          return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Score, restaurant.Grade);
+        }))
+      );
+  }
+
+  public sortByHighestScore(): Observable<Restaurant[]> {
+    return this.http.get<Restaurant[]>(`${ this.apiUrl }restaurants/score`)
+      .pipe(
+        map(response => response.map(restaurant => {
+          return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Score, restaurant.Grade);
+        }))
+      );
+  }
+
+  public sortByLowestScore(): Observable<Restaurant[]> {
+    return this.http.get<Restaurant[]>(`${ this.apiUrl }restaurants/score-asc`)
+      .pipe(
+        map(response => response.map(restaurant => {
+          return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Score, restaurant.Grade);
+        }))
+      );
+  }
+
 }

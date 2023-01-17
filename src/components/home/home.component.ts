@@ -27,16 +27,27 @@ export class HomeComponent implements OnInit {
     this.restService.getRestaurants().subscribe(restaurants => this.restaurants = restaurants);
   }
 
-  // ! tests
-  // getMenu() {
-  //   this.menuService.getCuisineMenu('american').subscribe(menuItems => {
-  //   menuItems.forEach(item => console.log(item));
-  //   });
-  // }
+  filterByCuisine(cuisine: string) {
+    this.restService.filterByCuisine(cuisine).subscribe(restaurants => this.restaurants = restaurants);
+  }
 
-  // getRestaurants() {
-  //   this.restService.getRestaurants().subscribe(menuItems => {
-  //     menuItems.forEach(item => console.log(item));
-  //   });
-  // }
+  filterByCity(city: string) {
+    this.restService.filterByCity(city).subscribe(restaurants => this.restaurants = restaurants);
+  }
+
+  sortByHighestRating() {
+    this.restService.sortByHighestRating().subscribe(restaurants => this.restaurants = restaurants);
+  }
+
+  sortByLowestRating() {
+    this.restService.sortByLowestRating().subscribe(restaurants => this.restaurants = restaurants);
+  }
+
+  sortByHighestScore() {
+    this.restService.sortByHighestScore().subscribe(restaurants => this.restaurants = restaurants);
+  }
+
+  sortByLowestScore() {
+    this.restService.sortByLowestScore().subscribe(restaurants => this.restaurants = restaurants);
+  }
 }
