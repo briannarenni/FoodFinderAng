@@ -43,11 +43,12 @@ export class HomeComponent implements OnInit {
     this.restService.sortByLowestRating().subscribe(restaurants => this.restaurants = restaurants);
   }
 
-  sortByHighestScore() {
-    this.restService.sortByHighestScore().subscribe(restaurants => this.restaurants = restaurants);
-  }
-
-  sortByLowestScore() {
-    this.restService.sortByLowestScore().subscribe(restaurants => this.restaurants = restaurants);
-  }
 }
+
+ // sortByHighestScore() {
+  //   this.restService.sortByHighestScore().subscribe(restaurants => this.restaurants = restaurants);
+  // }
+
+  // sortByLowestScore() {
+  //   this.restService.sortByLowestScore().subscribe(restaurants => this.restaurants = restaurants);
+  // }

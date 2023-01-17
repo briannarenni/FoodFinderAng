@@ -57,25 +57,7 @@ export class RestaurantService {
   }
 
   public sortByLowestRating(): Observable<Restaurant[]> {
-    return this.http.get<Restaurant[]>(`${ this.apiUrl }restaurants/rating-asc`)
-      .pipe(
-        map(response => response.map(restaurant => {
-          return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Score, restaurant.Grade);
-        }))
-      );
-  }
-
-  public sortByHighestScore(): Observable<Restaurant[]> {
-    return this.http.get<Restaurant[]>(`${ this.apiUrl }restaurants/score`)
-      .pipe(
-        map(response => response.map(restaurant => {
-          return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Score, restaurant.Grade);
-        }))
-      );
-  }
-
-  public sortByLowestScore(): Observable<Restaurant[]> {
-    return this.http.get<Restaurant[]>(`${ this.apiUrl }restaurants/score-asc`)
+    return this.http.get<Restaurant[]>(`${ this.apiUrl }restaurants/rating-low`)
       .pipe(
         map(response => response.map(restaurant => {
           return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Score, restaurant.Grade);
@@ -84,3 +66,21 @@ export class RestaurantService {
   }
 
 }
+
+  // public sortByHighestGrade(): Observable<Restaurant[]> {
+  //   return this.http.get<Restaurant[]>(`${ this.apiUrl }restaurants/grade`)
+  //     .pipe(
+  //       map(response => response.map(restaurant => {
+  //         return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Score, restaurant.Grade);
+  //       }))
+  //     );
+  // }
+
+  // public sortByLowestGrade(): Observable<Restaurant[]> {
+  //   return this.http.get<Restaurant[]>(`${ this.apiUrl }restaurants/grade-low`)
+  //     .pipe(
+  //       map(response => response.map(restaurant => {
+  //         return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Score, restaurant.Grade);
+  //       }))
+  //     );
+  // }
