@@ -1,15 +1,15 @@
 export class Restaurant {
-    restName: string;
-    cuisine: string;
-    city: string;
-    score: number;
-    grade: string;
+    RestName: string;
+    Cuisine: string;
+    City: string;
+    Score: number;
+    Grade: string;
 
     constructor (name: string, cuisine: string, city: string, score: number, grade: string) {
-        this.restName = name;
-        this.cuisine = cuisine;
-        this.city = city;
-        this.score = score;
-        this.grade = grade;
+        this.RestName = name;
+        this.Cuisine = cuisine;
+        this.City = city;
+        this.Score = score;
+        this.Grade = grade;
     }
 }

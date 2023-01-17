@@ -1,9 +1,13 @@
 export class MenuItem {
-    itemName: string;
-    itemPrice: number;
+    ItemName: string;
+    ItemPrice: number;
 
     constructor(name: string, price: number) {
-        this.itemName = name;
-        this.itemPrice = price;
+        this.ItemName = name;
+        this.ItemPrice = price;
+    }
+
+    toString() {
+        return 'MenuItem';
     }
 }
