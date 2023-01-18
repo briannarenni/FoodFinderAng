@@ -3,41 +3,30 @@
 <ng-template #template>
   <div class="modal-header">
     <h4 class="modal-title pull-left">{{restInfo.RestName}} - Menu</h4>
-    <button type="button" class="btn-close close bg-light pull-right" aria-label="Close" (click)="modalRef?.hide()">
+    <button type="button" class=" btn btn-close btn-close-white pull-right" aria-label="Close" (click)="modalRef?.hide()">
       <span aria-hidden="true" class="visually-hidden" style="font-size: 35px;">&times;</span>
     </button>
   </div>
 
   <div class="modal-body">
+    <table class="table table-borderless text-white">
+      <tbody>
+        <tr class="lead fw-normal text-decoration-underline">Appetizers</tr>
+        <tr *ngFor="let item of apps" class="mb-1">
+          <td>{{item.ItemName}}</td>
+          <td>{{item.ItemPrice}}</td>
+        </tr>
 
-    <div class="card">
-      <div class="card-title"></div>
-      <div class="card-body">
-
-        <table class="table table-borderless">
-          <tbody>
-            <tr class="lead fw-normal text-center">Appetizers</tr>
-            <tr *ngFor="let item of apps">
-              <td>{{item.ItemName}}</td>
-              <td>{{item.ItemPrice}}</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <table class="table table-borderless">
-          <tbody>
-            <tr class="lead fw-normal text-center">Entrees</tr>
-            <tr *ngFor="let item of entrees">
-              <td>{{item.ItemName}}</td>
-              <td>{{item.ItemPrice}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+        <tr class="lead fw-normal text-decoration-underline mt-1">Entrees</tr>
+        <tr *ngFor="let item of entrees">
+          <td>{{item.ItemName}}</td>
+          <td>{{item.ItemPrice}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
-  <div class="modal-footer px-4">
-    <button class="btn w-100 btn-primary mx-auto">Close</button>
+  <div class="modal-footer my-0 px-4">
+    <button (click)="modalRef?.hide()" class="btn w-100 btn-outline-ternary mx-auto">Close</button>
   </div>
 </ng-template>

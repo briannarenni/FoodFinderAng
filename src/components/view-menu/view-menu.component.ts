@@ -1,5 +1,4 @@
 import { Component, Input, OnInit, TemplateRef } from '@angular/core';
-import { tap } from 'rxjs/operators';
 import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 import { MenuService } from '../../services/menu.service';
 import { MenuItem } from '../../models/MenuItem';
@@ -13,13 +12,11 @@ import { Restaurant } from '../../models/Restaurant';
 
 export class ViewMenuComponent implements OnInit {
   modalRef?: BsModalRef;
-  // menuItems: MenuItem[];
   @Input() restInfo!: Restaurant;
   apps: MenuItem[];
   entrees: MenuItem[];
 
   constructor(private modalService: BsModalService, private menuService: MenuService) {
-    // this.menuItems = [];
     this.apps = [];
     this.entrees = [];
   }
@@ -31,16 +28,17 @@ export class ViewMenuComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     this.getRestMenu();
-    this.modalRef = this.modalService.show(template, { class: 'modal-xl' });
+    this.modalRef = this.modalService.show(template, { class: 'modal-lg' });
   }
 
   getRestMenu() {
-    this.menuService.getCuisineMenu(this.restInfo.Cuisine).pipe(
-      tap(menuItems => {
+    this.menuService.getCuisineMenu(this.restInfo.Cuisine).subscribe(
+      menuItems => {
         this.apps = menuItems.filter(item => item.ItemGroup === 'appetizer');
         this.entrees = menuItems.filter(item => item.ItemGroup !== 'appetizer');
-      })
+      }
     );
     return;
   }
+
 }

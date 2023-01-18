@@ -1,6 +1,6 @@
 body {
   margin: 10px;
-  padding: 10px;
+  padding: 10px 25px;
   background-color: var(--dark);
   color: var(--light);
 }
@@ -59,13 +59,8 @@ thead {
   --secondary: #8850ef;
   --ternary: #f631be;
   --pink: #e83e8c;
-  --success: #179e36;
-  --warning: #ed720e;
-  --danger: #de2134;
   --white: #fff;
   --light: #f8f9fa;
   --dark: #070707;
-  --blue: #007bff;
-  --gray: #41464a;
   --dark-grey: #1c1f21;
 }
