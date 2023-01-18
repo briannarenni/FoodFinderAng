@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { MenuService } from '../../services/menu.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { RestaurantService } from '../../services/restaurant.service';
-import { MenuItem } from '../../models/MenuItem';
 import { Restaurant } from '../../models/Restaurant';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ViewMenuComponent } from '../view-menu/view-menu.component';
 
 @Component({
   selector: 'app-home',
@@ -11,22 +11,20 @@ import { Restaurant } from '../../models/Restaurant';
 })
 
 export class HomeComponent implements OnInit {
-  menuItems?: MenuItem[];
   restaurants?: Restaurant[];
 
-  constructor(private menuService: MenuService, private restService: RestaurantService) { }
+  constructor(private restService: RestaurantService,) { }
 
   ngOnInit() {
     this.getRestaurants();
-    this.getMenu();
   }
 
   getRestaurants() {
     this.restService.getRestaurants().subscribe(restaurants => this.restaurants = restaurants);
   }
 
-  getMenu() {
-    this.menuService.getCuisineMenu('american').subscribe(menuItems => this.menuItems = menuItems);
+  open() {
+
   }
 
   filterByCuisine(cuisine: string) {
@@ -44,5 +42,7 @@ export class HomeComponent implements OnInit {
   sortByLowestRating() {
     this.restService.sortByLowestRating().subscribe(restaurants => this.restaurants = restaurants);
   }
+
+
 
 }

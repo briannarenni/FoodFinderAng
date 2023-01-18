@@ -29,14 +29,5 @@ export class MenuService {
 
 }
 
-  // public getMenus(): Observable<MenuItem[]> {
-  //   return this.http.get<MenuItem[]>(`${ this.apiUrl }menus/cuisine`)
-  //     .pipe(
-  //       map(response => response.map(menuItem => {
-  //         const { ItemName, ItemPrice } = menuItem;
-  //         return new MenuItem(ItemName, ItemPrice);
-  //       }))
-  //     );
-  // }
 
 
