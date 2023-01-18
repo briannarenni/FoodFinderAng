@@ -1,0 +1,8 @@
+.btn-close {
+  color: white;
+}
+
+.modal-header, .modal-body, .modal-footer {
+  background-color: var(--dark-grey);
+  color: var(--light);
+}

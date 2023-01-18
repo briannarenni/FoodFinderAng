@@ -1,4 +1,4 @@
-<nav class="d-flex justify-content-between m-1">
+<nav class="d-flex justify-content-between mx-2">
   <button class="btn btn-outline-info p-2 my-1">Clear Filters</button>
   <div class="h1">Food Finder</div>
   <button class="btn btn-outline-info p-2 my-1">Sort & Filter</button>
@@ -16,17 +16,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let restaurant of restaurants" id="rest-{{restaurant.Cuisine}}">
+    <tr *ngFor="let restaurant of restaurants">
       <td class="lead fw-normal">{{restaurant.RestName}}</td>
       <td>{{restaurant.Cuisine}}</td>
       <td>{{restaurant.City}}</td>
       <td class="text-center">{{restaurant.Rating}}</td>
       <td class="text-center">{{restaurant.Grade}}</td>
-      <td class="text-center">
-        <button class="btn btn-sm btn-outline-ternary">View Menu</button>
-      </td>
-
-      <app-view-menu></app-view-menu>
+      <td class="text-center"><app-view-menu [restInfo]="restaurant"></app-view-menu></td>
     </tr>
   </tbody>
 </table>

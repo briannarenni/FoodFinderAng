@@ -50,8 +50,8 @@ thead {
   color: black;
   background-color: var(--ternary);
   border-color: var(--ternary);
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 :root {
@@ -67,5 +67,5 @@ thead {
   --dark: #070707;
   --blue: #007bff;
   --gray: #41464a;
-  --dark-grey: #222629;
+  --dark-grey: #1c1f21;
 }

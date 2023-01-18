@@ -21,8 +21,8 @@ export class MenuService {
     return this.http.get<MenuItem[]>(`${ this.apiUrl }menus/cuisine`, { params })
       .pipe(
         map(response => response.map(menuItem => {
-          const { ItemName, ItemPrice } = menuItem;
-          return new MenuItem(ItemName, ItemPrice);
+          const { ItemName, ItemPrice, ItemGroup } = menuItem;
+          return new MenuItem(ItemName, ItemPrice, ItemGroup);
         }))
       );
   }
