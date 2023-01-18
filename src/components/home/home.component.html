@@ -1,7 +1,8 @@
 <app-navbar></app-navbar>
 
 <table class="table text-white table-responsive table-borderless mt-2">
-  <thead class="fs-5">
+  <!-- border-bottom -->
+  <thead class="fs-4">
     <tr>
       <th scope="col">Restaurant</th>
       <th scope="col">Cuisine</th>
@@ -14,8 +15,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let restaurant of restaurants" class="p-2">
-      <td class="lead fw-normal">{{restaurant.RestName}}</td>
+    <tr *ngFor="let restaurant of restaurants" class="p-2 lead">
+      <td class="">{{restaurant.RestName}}</td>
       <td>{{restaurant.Cuisine}}</td>
       <td>{{restaurant.City}}</td>
       <td class="text-center">{{restaurant.Rating}}</td>
