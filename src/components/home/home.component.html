@@ -1,11 +1,17 @@
-<table class="table table-dark table-responsive table-hover">
-  <thead class="lead">
+<nav class="d-flex justify-content-between m-1">
+  <button class="btn btn-outline-info p-2 my-1">Clear Filters</button>
+  <div class="h2">Food Finder</div>
+  <button class="btn btn-outline-info p-2 my-1">Sort & Filter</button>
+</nav>
+
+<table class="table text-white table-responsive table-borderless">
+  <thead class=" lead border-bottom">
     <tr>
       <th scope="col">Restaurant</th>
       <th scope="col">Cuisine</th>
       <th scope="col">City</th>
-      <th scope="col">Rating</th>
-      <th scope="col">Grade</th>
+      <th scope="col" class="text-center">Rating</th>
+      <th scope="col" class="text-center">Grade</th>
       <th scope="col"></th> <!-- See Menu Btn -->
     </tr>
   </thead>
@@ -14,12 +20,10 @@
       <td>{{restaurant.RestName}}</td>
       <td>{{restaurant.Cuisine}}</td>
       <td>{{restaurant.City}}</td>
-      <td>{{restaurant.Rating}}</td>
-      <td>{{restaurant.Grade}}</td>
-      <td><button class="see-menu" class="btn btn-sm btn-primary">Menu</button></td>
+      <td class="text-center">{{restaurant.Rating}}</td>
+      <td class="text-center">{{restaurant.Grade}}</td>
+      <!-- TODO: Add menu -->
+      <td class="text-center"><button class="see-menu" class="btn btn-sm btn-outline-ternary">View Menu</button></td>
     </tr>
   </tbody>
 </table>
-
-<!-- TODO: Add menu -->
-<!-- <td><button id="see-menu" class="btn btn-sm btn-primary">See Menu</button></td> -->
