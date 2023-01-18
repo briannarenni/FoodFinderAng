@@ -50,12 +50,12 @@ body {
 }
 
 :root {
-  --primary: #b087fc;
+  --primary: #b16aef;
   --secondary: #8850ef;
   --ternary: #f631be;
   --pink: #e83e8c;
   --white: #fff;
   --light: #f8f9fa;
   --dark: #070707;
-  --dark-grey: #131516;
+  --dark-grey: #141616;
 }
