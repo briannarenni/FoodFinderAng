@@ -9,8 +9,6 @@ import { Restaurant } from '../models/Restaurant';
 })
 
 export class RestaurantService {
-  cuisines!: ['american', 'chinese', 'greek', 'italian', 'mexican', 'thai'];
-  cities!: ['Atlanta', 'Chicago', 'Houston', 'Los Angeles', 'Miami', 'New Orleans', 'New York City', 'Orlando', 'Portland', 'Seattle', 'San Diego', 'San Francisco'];
   apiUrl: string;
   restName?: string;
   restCuisine?: string;
