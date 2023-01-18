@@ -3,33 +3,21 @@
   <div class="h1 mx-auto">Food Finder</div>
 
   <div class="right-nav">
-    <div data-bs-toggle="dropdown" class="d-inline-block">
-      <button class="btn btn-sm btn-outline-info dropdown-toggle p-2">Filter City</button>
-      <ul class="dropdown-menu dropdown-menu-dark">
-        <li><button class="dropdown-item">Atlanta</button></li>
-        <li><button class="dropdown-item">Chicago</button></li>
-        <li><button class="dropdown-item">Houston</button></li>
-        <li><button class="dropdown-item">Los Angeles</button></li>
-        <li><button class="dropdown-item">Miami</button></li>
-        <li><button class="dropdown-item">New Orleans</button></li>
-        <li><button class="dropdown-item">New York City</button></li>
-        <li><button class="dropdown-item">Orlando</button></li>
-        <li><button class="dropdown-item">Portland</button></li>
-        <li><button class="dropdown-item">Seattle</button></li>
-        <li><button class="dropdown-item">San Diego</button></li>
-        <li><button class="dropdown-item">San Francisco</button></li>
-      </ul>
-    </div>
-
     <div data-bs-toggle="dropdown" class="d-inline-block mx-2">
       <button class="btn btn-sm btn-outline-info dropdown-toggle p-2 my-2">Filter Cuisine</button>
       <ul class="dropdown-menu dropdown-menu-dark">
-        <li><button class="dropdown-item">American</button></li>
-        <li><button class="dropdown-item">Chinese</button></li>
-        <li><button class="dropdown-item">Greek</button></li>
-        <li><button class="dropdown-item">Italian</button></li>
-        <li><button class="dropdown-item">Mexican</button></li>
-        <li><button class="dropdown-item">Thai</button></li>
+        <li *ngFor="let cuisine of cuisines" [value]="cuisine">
+          <button class="dropdown-item">{{cuisine}}</button>
+        </li>
+      </ul>
+    </div>
+
+    <div data-bs-toggle="dropdown" class="d-inline-block">
+      <button class="btn btn-sm btn-outline-info dropdown-toggle p-2">Filter City</button>
+      <ul class="dropdown-menu dropdown-menu-dark">
+        <li *ngFor="let city of cities" [value]="city">
+          <button class="dropdown-item">{{city}}</button>
+        </li>
       </ul>
     </div>
 

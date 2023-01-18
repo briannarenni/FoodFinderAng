@@ -13,14 +13,17 @@
       <tbody>
         <tr class="lead fw-semibold text-decoration-underline">Appetizers</tr>
         <tr *ngFor="let item of apps" class="mb-1">
-          <td class="w-75">{{item.ItemName}}</td>
-          <td class="w-25">{{item.ItemPrice}}</td>
+          <td class="col-10">{{item.ItemName}}</td>
+          <td class="col-2">{{item.ItemPrice}}</td>
         </tr>
-
-        <tr class="lead fw-semibold text-decoration-underline mt-2">Entrees</tr>
+      </tbody>
+    </table>
+    <table class="table table-borderless text-white">
+      <tbody>
+        <tr class="lead fw-semibold text-decoration-underline p-2">Entrees</tr>
         <tr *ngFor="let item of entrees">
-          <td>{{item.ItemName}}</td>
-          <td>{{item.ItemPrice}}</td>
+          <td class="col-10">{{item.ItemName}}</td>
+          <td class="col-2">{{item.ItemPrice}}</td>
         </tr>
       </tbody>
     </table>

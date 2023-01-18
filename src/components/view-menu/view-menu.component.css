@@ -1,7 +1,8 @@
 .modal-header,
 .modal-body,
 .modal-footer {
-  background-color: var(--dark-grey);
+  background-color: var(--dark);
   color: var(--light);
 }
+
 
