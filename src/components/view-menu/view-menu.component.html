@@ -2,22 +2,22 @@
 
 <ng-template #template>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">{{restInfo.RestName}} - Menu</h4>
-    <button type="button" class=" btn btn-close btn-close-white pull-right" aria-label="Close" (click)="modalRef?.hide()">
+    <h4 class="modal-title fw-bold text-info pull-left">{{restInfo.RestName}} ({{restInfo.City}})</h4>
+    <button type="button" class="btn btn-close btn-close-white pull-right" aria-label="Close" (click)="modalRef?.hide()">
       <span aria-hidden="true" class="visually-hidden" style="font-size: 35px;">&times;</span>
     </button>
   </div>
 
-  <div class="modal-body">
+  <div class="modal-body px-4">
     <table class="table table-borderless text-white">
       <tbody>
-        <tr class="lead fw-normal text-decoration-underline">Appetizers</tr>
+        <tr class="lead fw-semibold text-decoration-underline">Appetizers</tr>
         <tr *ngFor="let item of apps" class="mb-1">
-          <td>{{item.ItemName}}</td>
-          <td>{{item.ItemPrice}}</td>
+          <td class="w-75">{{item.ItemName}}</td>
+          <td class="w-25">{{item.ItemPrice}}</td>
         </tr>
 
-        <tr class="lead fw-normal text-decoration-underline mt-1">Entrees</tr>
+        <tr class="lead fw-semibold text-decoration-underline mt-2">Entrees</tr>
         <tr *ngFor="let item of entrees">
           <td>{{item.ItemName}}</td>
           <td>{{item.ItemPrice}}</td>
@@ -27,6 +27,6 @@
   </div>
 
   <div class="modal-footer my-0 px-4">
-    <button (click)="modalRef?.hide()" class="btn w-100 btn-outline-ternary mx-auto">Close</button>
+    <button (click)="modalRef?.hide()" class="btn col-8 btn-outline-info mx-auto">Close</button>
   </div>
 </ng-template>

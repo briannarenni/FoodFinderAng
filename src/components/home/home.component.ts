@@ -11,8 +11,10 @@ import { ViewMenuComponent } from '../view-menu/view-menu.component';
 })
 
 export class HomeComponent implements OnInit {
-  restaurants?: Restaurant[];
   @Input() restInfo!: Restaurant;
+  restaurants?: Restaurant[];
+  restaurantList?: Restaurant[];
+
 
   constructor(private restService: RestaurantService) { }
 
