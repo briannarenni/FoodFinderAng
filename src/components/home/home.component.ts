@@ -25,9 +25,4 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  resetResults() {
-    this.currTableList = [...this.restaurants];
-    this.currTableListChange.emit(this.currTableList);
-  }
-
 }

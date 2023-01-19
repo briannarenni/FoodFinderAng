@@ -28,6 +28,12 @@ export class NavbarComponent implements OnInit {
     this.cities = ['Atlanta', 'Chicago', 'Houston', 'Los Angeles', 'Miami', 'New Orleans', 'New York City', 'Orlando', 'Portland', 'Seattle', 'San Diego', 'San Francisco'];
     this.sortOptions = ['Default', 'Highest Rating', 'Lowest Rating'];
   }
+  clearFilters() {
+    this.selectedCuisine = '';
+    this.selectedCity = '';
+    this.currTableList = [...this.restaurants];
+    this.currTableListChange.emit(this.currTableList);
+  }
 
   sortTable() {
     this.isDesc = !this.isDesc;
