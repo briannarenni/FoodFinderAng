@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { RestaurantService } from '../../services/restaurant.service';
+import { TableService } from '../../services/table.service';
 import { Restaurant } from '../../models/Restaurant';
 import { NavbarComponent } from '../navbar/navbar.component';
 
@@ -15,21 +16,18 @@ export class HomeComponent implements OnInit {
   @Input() currTableList!: Restaurant[];
   @Output() currTableListChange = new EventEmitter<Restaurant[]>();
 
-  constructor(private restService: RestaurantService) { }
+  constructor(private restService: RestaurantService, private tableService: TableService) { }
 
   ngOnInit() {
-    this.getRestaurants();
-  }
-
-  getRestaurants() {
-    this.restService.getRestaurants().subscribe(restaurants => {
-      this.restaurants = restaurants;
-      this.currTableList = restaurants;
+    this.restService.getRestaurants().subscribe(response => {
+      this.restaurants = response;
+      this.currTableList = [...response];
     });
   }
 
-  resetResults() {
-    location.reload();
+  clearResults() {
+    this.currTableList = [...this.restaurants];
+    this.currTableListChange.emit(this.currTableList);
   }
 
 }

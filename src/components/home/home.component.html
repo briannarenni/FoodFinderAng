@@ -9,18 +9,21 @@
       <th scope="col" class="text-center">Rating</th>
       <th scope="col" class="text-center">Grade</th>
       <th scope="col" class="text-center p-2">
-        <button id="reset-btn" class="btn btn-link text-ternary fs-6 fst-italic" (click)="resetResults()">Reset Results</button>
+        <button id="reset-btn" class="btn btn-link text-ternary fs-6 fst-italic" (click)="clearResults()">Reset Results</button>
       </th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let restaurant of currTableList" class="p-2 lead">
-      <td class="">{{restaurant.RestName}}</td>
+    <tr class="p-2 lead" *ngFor="let restaurant of currTableList"
+      [ngClass]="{'text-danger': restaurant.Grade == 'F', 'text-white': restaurant.Grade != 'F'}">
+      <td>{{restaurant.RestName}}</td>
       <td>{{restaurant.Cuisine}}</td>
       <td>{{restaurant.City}}</td>
       <td class="text-center">{{restaurant.Rating}}</td>
       <td class="text-center">{{restaurant.Grade}}</td>
-      <td class="text-center"><app-view-menu [restInfo]="restaurant"></app-view-menu></td>
+      <td class="text-center">
+        <app-view-menu *ngIf="restaurant.Grade !== 'F'" [restInfo]="restaurant"></app-view-menu>
+      </td>
     </tr>
   </tbody>
 </table>
