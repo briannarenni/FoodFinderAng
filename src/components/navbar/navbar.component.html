@@ -6,7 +6,8 @@
           [innerHTML]="selectedCuisine ? selectedCuisine : 'Cuisine'"></button>
         <ul class="dropdown-menu dropdown-menu-dark text-center">
           <li *ngFor="let cuisine of cuisines" [value]="cuisine">
-            <button class="dropdown-item" (click)="filterByCuisine(cuisine)" [ngClass]="{'active': selectedCuisine === cuisine}">{{cuisine}}</button>
+            <button class="dropdown-item" (click)="filterTable('cuisine', cuisine)"
+              [ngClass]="{'active': selectedCuisine === cuisine}">{{cuisine}}</button>
           </li>
         </ul>
       </div>
@@ -17,7 +18,7 @@
         <button id="city-btn" class="btn btn-outline-info dropdown-toggle px-3" [innerHTML]="selectedCity ? selectedCity : 'City'"></button>
         <ul class="dropdown-menu dropdown-menu-dark text-center">
           <li *ngFor="let city of cities" [value]="city">
-            <button class="dropdown-item" (click)="filterByCity(city)" [ngClass]="{'active': selectedCity === city}">{{city}}</button>
+            <button class="dropdown-item" (click)="filterTable('city', city)" [ngClass]="{'active': selectedCity === city}">{{city}}</button>
           </li>
         </ul>
       </div>
