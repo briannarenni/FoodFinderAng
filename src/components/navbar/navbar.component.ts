@@ -9,9 +9,11 @@ import { Restaurant } from '../../models/Restaurant';
 })
 
 export class NavbarComponent implements OnInit {
-  cuisines!: String[];
-  cities!: String[];
-  sortOptions!: String[];
+  cuisines!: string[];
+  cities!: string[];
+  sortOptions!: string[];
+  selectedCuisine!: string;
+  selectedCity!: string;
   isDesc = false;
   originalList!: Restaurant[];
   @Input() restaurants!: Restaurant[];
@@ -45,10 +47,12 @@ export class NavbarComponent implements OnInit {
   }
 
   filterByCuisine(cuisine: string) {
+    this.selectedCuisine = cuisine;
     this.restService.filterByCuisine(cuisine).subscribe(restaurants => this.currTableList = restaurants);
   }
 
   filterByCity(city: string) {
+    this.selectedCity = city;
     this.restService.filterByCity(city).subscribe(restaurants => this.currTableList = restaurants);
   }
 

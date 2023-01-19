@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   }
 
   resetResults() {
-    this.getRestaurants();
+    location.reload();
   }
 
 }

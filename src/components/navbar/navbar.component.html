@@ -2,10 +2,11 @@
   <div class="left-nav mx-1">
     <div class="btn-group p-1">
       <div data-bs-toggle="dropdown" class="d-inline-block">
-        <button id="cuisine-btn" class="btn btn-outline-info dropdown-toggle px-2">Cuisine</button>
+        <button id="cuisine-btn" class="btn btn-outline-info dropdown-toggle px-2"
+          [innerHTML]="selectedCuisine ? selectedCuisine : 'Cuisine'"></button>
         <ul class="dropdown-menu dropdown-menu-dark text-center">
           <li *ngFor="let cuisine of cuisines" [value]="cuisine">
-            <button class="dropdown-item">{{cuisine}}</button>
+            <button class="dropdown-item" (click)="filterByCuisine(cuisine)" [ngClass]="{'active': selectedCuisine === cuisine}">{{cuisine}}</button>
           </li>
         </ul>
       </div>
@@ -13,10 +14,10 @@
 
     <div class="btn-group p-1">
       <div data-bs-toggle="dropdown" class="d-inline-block">
-        <button id="city-btn" class="btn btn-outline-info dropdown-toggle px-3">City</button>
+        <button id="city-btn" class="btn btn-outline-info dropdown-toggle px-3" [innerHTML]="selectedCity ? selectedCity : 'City'"></button>
         <ul class="dropdown-menu dropdown-menu-dark text-center">
           <li *ngFor="let city of cities" [value]="city">
-            <button class="dropdown-item">{{city}}</button>
+            <button class="dropdown-item" (click)="filterByCity(city)" [ngClass]="{'active': selectedCity === city}">{{city}}</button>
           </li>
         </ul>
       </div>
