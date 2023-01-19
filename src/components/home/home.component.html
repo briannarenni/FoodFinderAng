@@ -1,17 +1,16 @@
 <app-navbar></app-navbar>
 
 <table class="table text-white table-responsive table-borderless mt-2">
-  <!-- border-bottom -->
-  <thead class="fs-4">
+  <thead class="fs-4 text-primary">
     <tr>
       <th scope="col">Restaurant</th>
       <th scope="col">Cuisine</th>
       <th scope="col">City</th>
       <th scope="col" class="text-center">Rating</th>
       <th scope="col" class="text-center">Grade</th>
-      <th scope="col" class="text-center">
-        <button class="btn btn-sm btn-outline-info">Sort By Rating</button>
-      </th>
+      <th scope="col" class="text-center p-2">
+        <!-- (click)="sortTable()" -->
+        <a href="#" id="reset-btn" class="text-ternary fs-6 fst-italic">Reset Results</a>
     </tr>
   </thead>
   <tbody>

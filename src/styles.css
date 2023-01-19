@@ -5,6 +5,14 @@ body {
   color: var(--light);
 }
 
+.text-primary {
+  color: var(--primary) !important;
+}
+
+.text-ternary {
+  color: var(--ternary);
+}
+
 .btn-primary {
   background-color: var(--primary);
   border-color: var(--primary);
@@ -50,9 +58,9 @@ body {
 }
 
 :root {
-  --primary: #b16aef;
+  --primary: #b238fe;
   --secondary: #8850ef;
-  --ternary: #f631be;
+  --ternary: #f930c0;
   --pink: #e83e8c;
   --white: #fff;
   --light: #f8f9fa;

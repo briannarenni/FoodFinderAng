@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { RestaurantService } from '../../services/restaurant.service';
 import { Restaurant } from '../../models/Restaurant';
-import { ViewMenuComponent } from '../view-menu/view-menu.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-home',
@@ -12,17 +11,22 @@ import { ViewMenuComponent } from '../view-menu/view-menu.component';
 
 export class HomeComponent implements OnInit {
   @Input() restInfo!: Restaurant;
-  restaurants?: Restaurant[];
-  sortedRestaurants?: Restaurant[];
+  restaurants!: Restaurant[];
+  currTableList!: Restaurant[];
 
   constructor(private restService: RestaurantService) { }
 
   ngOnInit() {
     this.getRestaurants();
+    this.currTableList = this.restaurants;
   }
 
   getRestaurants() {
     this.restService.getRestaurants().subscribe(restaurants => this.restaurants = restaurants);
+  }
+
+  resetResults() {
+    this.currTableList = this.restaurants;
   }
 
   filterByCuisine(cuisine: string) {
@@ -33,11 +37,4 @@ export class HomeComponent implements OnInit {
     this.restService.filterByCity(city).subscribe(restaurants => this.restaurants = restaurants);
   }
 
-  sortByHighestRating() {
-    this.restService.sortByHighestRating().subscribe(restaurants => this.restaurants = restaurants);
-  }
-
-  sortByLowestRating() {
-    this.restService.sortByLowestRating().subscribe(restaurants => this.restaurants = restaurants);
-  }
 }

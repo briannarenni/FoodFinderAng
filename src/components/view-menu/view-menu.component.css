@@ -5,4 +5,6 @@
   color: var(--light);
 }
 
-
+.btn-close-white {
+filter: invert(45%) sepia(58%) saturate(5049%) hue-rotate(252deg) brightness(99%) contrast(94%);
+}

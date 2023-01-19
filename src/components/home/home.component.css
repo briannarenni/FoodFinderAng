@@ -1,6 +1,10 @@
+#reset-btn {
+  font-size: 16px !important;
+  letter-spacing: normal;
+}
+
 thead {
   background-color: var(--dark);
-  color: var(--primary);
   position: sticky;
   top: 0;
   padding: 5 10px;
@@ -9,6 +13,7 @@ thead {
 th {
   padding: 10px;
   letter-spacing: 2px;
+    font-weight: normal !important;
 }
 
 thead:after {

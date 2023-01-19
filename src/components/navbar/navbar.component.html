@@ -1,16 +1,9 @@
-<nav class="d-flex justify-content-between my-2 px-2 border-bottom-0">
-  <div class="left-nav">
-    <button id="clear-btn" class="btn btn-sm btn-outline-ternary p-2 my-1">Clear Filters</button>
-  </div>
-
-  <div id="title" class="h1 mx-auto">Food Finder</div>
-
-  <div class="right-nav">
-
-    <div class="btn-group">
-      <div data-bs-toggle="dropdown" class="d-inline-block mx-2">
-        <button id="cuisine-btn" class="btn btn-sm btn-outline-info dropdown-toggle p-2 my-2">Filter Cuisine</button>
-        <ul class="dropdown-menu dropdown-menu-dark">
+<nav class="d-flex justify-content-between align-content-center mx-1">
+  <div class="left-nav mx-1">
+    <div class="btn-group p-1">
+      <div data-bs-toggle="dropdown" class="d-inline-block">
+        <button id="cuisine-btn" class="btn btn-outline-info dropdown-toggle px-2">Cuisine</button>
+        <ul class="dropdown-menu dropdown-menu-dark text-center">
           <li *ngFor="let cuisine of cuisines" [value]="cuisine">
             <button class="dropdown-item">{{cuisine}}</button>
           </li>
@@ -18,16 +11,30 @@
       </div>
     </div>
 
-    <div class="btn-group">
+    <div class="btn-group p-1">
       <div data-bs-toggle="dropdown" class="d-inline-block">
-        <button id="city-btn" class="btn btn-sm btn-outline-info dropdown-toggle p-2">Filter City</button>
-        <ul class="dropdown-menu dropdown-menu-dark">
+        <button id="city-btn" class="btn btn-outline-info dropdown-toggle px-2">City</button>
+        <ul class="dropdown-menu dropdown-menu-dark text-center">
           <li *ngFor="let city of cities" [value]="city">
             <button class="dropdown-item">{{city}}</button>
           </li>
         </ul>
       </div>
     </div>
+  </div>
 
+  <div id="title" class="h1">Food Finder</div>
+
+  <div class="right-nav mx-1">
+    <div class="btn-group p-1">
+      <div data-bs-toggle="dropdown" class="d-inline-block">
+        <button id="city-btn" class="btn btn-outline-info dropdown-toggle px-3">Sort Results</button>
+        <ul class="dropdown-menu dropdown-menu-dark text-center">
+          <li *ngFor="let option of sortOptions" [value]="option">
+            <button class="dropdown-item">{{option}}</button>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </nav>
