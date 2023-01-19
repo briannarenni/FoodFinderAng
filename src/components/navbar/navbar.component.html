@@ -13,7 +13,7 @@
 
     <div class="btn-group p-1">
       <div data-bs-toggle="dropdown" class="d-inline-block">
-        <button id="city-btn" class="btn btn-outline-info dropdown-toggle px-2">City</button>
+        <button id="city-btn" class="btn btn-outline-info dropdown-toggle px-3">City</button>
         <ul class="dropdown-menu dropdown-menu-dark text-center">
           <li *ngFor="let city of cities" [value]="city">
             <button class="dropdown-item">{{city}}</button>
@@ -22,19 +22,20 @@
       </div>
     </div>
   </div>
-
+  <!-- Title -->
   <div id="title" class="h1">Food Finder</div>
-
+  <!-- Title -->
   <div class="right-nav mx-1">
     <div class="btn-group p-1">
-      <div data-bs-toggle="dropdown" class="d-inline-block">
+      <button (click)="sortTable()" id="city-btn" class="btn btn-outline-info px-3">Sort By Rating</button>
+      <!-- <div data-bs-toggle="dropdown" class="d-inline-block">
         <button id="city-btn" class="btn btn-outline-info dropdown-toggle px-3">Sort Results</button>
         <ul class="dropdown-menu dropdown-menu-dark text-center">
           <li *ngFor="let option of sortOptions" [value]="option">
             <button class="dropdown-item">{{option}}</button>
           </li>
         </ul>
-      </div>
+      </div> -->
     </div>
   </div>
 </nav>

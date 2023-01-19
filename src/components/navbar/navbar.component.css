@@ -1,1 +1,11 @@
+#reset-btn {
+  font-size: 16px !important;
+  letter-spacing: normal;
+}
 
+#reset-btn:hover {
+  font-size: 16px !important;
+  letter-spacing: normal;
+  color: var(--ternary);
+  transform: scale(1.1);
+}

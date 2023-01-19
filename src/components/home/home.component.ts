@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { RestaurantService } from '../../services/restaurant.service';
 import { Restaurant } from '../../models/Restaurant';
 import { NavbarComponent } from '../navbar/navbar.component';
@@ -11,30 +11,25 @@ import { NavbarComponent } from '../navbar/navbar.component';
 
 export class HomeComponent implements OnInit {
   @Input() restInfo!: Restaurant;
-  restaurants!: Restaurant[];
-  currTableList!: Restaurant[];
+  @Input() restaurants!: Restaurant[];
+  @Input() currTableList!: Restaurant[];
+  @Output() currTableListChange = new EventEmitter<Restaurant[]>();
 
   constructor(private restService: RestaurantService) { }
 
   ngOnInit() {
     this.getRestaurants();
-    this.currTableList = this.restaurants;
   }
 
   getRestaurants() {
-    this.restService.getRestaurants().subscribe(restaurants => this.restaurants = restaurants);
+    this.restService.getRestaurants().subscribe(restaurants => {
+      this.restaurants = restaurants;
+      this.currTableList = restaurants;
+    });
   }
 
   resetResults() {
-    this.currTableList = this.restaurants;
-  }
-
-  filterByCuisine(cuisine: string) {
-    this.restService.filterByCuisine(cuisine).subscribe(restaurants => this.restaurants = restaurants);
-  }
-
-  filterByCity(city: string) {
-    this.restService.filterByCity(city).subscribe(restaurants => this.restaurants = restaurants);
+    this.getRestaurants();
   }
 
 }
