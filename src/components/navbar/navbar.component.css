@@ -1,11 +1,13 @@
+.btn {
+  font-size: 20px;
+}
+
 #clear-btn {
-  font-size: 18px !important;
+  font-size: 14px !important;
   letter-spacing: normal;
 }
 
 #clear-btn:hover {
-  font-size: 18px !important;
   letter-spacing: normal;
-  color: var(--ternary);
-  transform: scale(1.1);
+  transform: scale(1.2);
 }

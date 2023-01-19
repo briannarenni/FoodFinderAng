@@ -1,9 +1,9 @@
 <nav class="d-flex justify-content-between align-content-center mx-1">
   <div class="left-nav mx-1">
-    <div class="btn-group p-1">
+    <div class="btn-group">
       <div data-bs-toggle="dropdown" class="d-inline-block">
-        <button id="cuisine-btn" class="btn btn-outline-info dropdown-toggle px-2"
-          [innerHTML]="selectedCuisine ? selectedCuisine : 'Cuisine'"></button>
+        <button id="cuisine-btn" class="btn btn-outline-info dropdown-toggle px-2 mx-1"
+          [innerHTML]="selectedCuisine ? selectedCuisine : 'Filter Cuisine'"></button>
         <ul class="dropdown-menu dropdown-menu-dark text-center">
           <li *ngFor="let cuisine of cuisines" [value]="cuisine">
             <button class="dropdown-item" (click)="filterTable('cuisine', cuisine)"
@@ -15,7 +15,7 @@
 
     <div class="btn-group p-1">
       <div data-bs-toggle="dropdown" class="d-inline-block">
-        <button id="city-btn" class="btn btn-outline-info dropdown-toggle px-3" [innerHTML]="selectedCity ? selectedCity : 'City'"></button>
+        <button id="city-btn" class="btn btn-outline-info dropdown-toggle px-2" [innerHTML]="selectedCity ? selectedCity : 'Filter City'"></button>
         <ul class="dropdown-menu dropdown-menu-dark text-center">
           <li *ngFor="let city of cities" [value]="city">
             <button class="dropdown-item" (click)="filterTable('city', city)" [ngClass]="{'active': selectedCity === city}">{{city}}</button>
@@ -23,26 +23,28 @@
         </ul>
       </div>
     </div>
-
-    <!-- Clear filters -->
-    <button id="clear-btn" class="btn btn-link text-ternary fst-italic fs-6 mx-1 p-1" (click)="clearFilters()">Clear</button>
-
+    <div class="row"><!-- Clear filters -->
+      <button id="clear-btn" class="btn btn-outline-ternary w-50 mx-auto p-1" (click)="clearFilters()">Clear Filters</button>
+    </div>
   </div>
 
   <!-- Title -->
   <div id="title" class="h1">Food Finder</div>
 
   <div class="right-nav mx-1">
-    <div class="btn-group p-1">
-      <button (click)="sortTable()" id="city-btn" class="btn btn-outline-info px-3">Sort By Rating</button>
-      <!-- <div data-bs-toggle="dropdown" class="d-inline-block">
-        <button id="city-btn" class="btn btn-outline-info dropdown-toggle px-3">Sort Results</button>
+    <!-- Clear filters -->
+    <!-- <button id="clear-btn" class="btn btn-outline-ternary mx-1 p-1" (click)="clearFilters()">Clear Filters</button> -->
+    <div class="btn-group">
+      <div data-bs-toggle="dropdown" class="d-inline-block">
+        <button id="sort-btn" class="btn btn-outline-info dropdown-toggle mx-1 px-2" id="sort-btn"
+          class="btn btn-outline-info dropdown-toggle mx-1 px-2" [innerHTML]="'Sort By: ' + selectedSortOption"></button>
         <ul class="dropdown-menu dropdown-menu-dark text-center">
           <li *ngFor="let option of sortOptions" [value]="option">
-            <button class="dropdown-item">{{option}}</button>
+            <button class="dropdown-item" (click)="sortTable(option)" [ngClass]="{'active': selectedSortOption === option}">{{option}}</button>
           </li>
         </ul>
-      </div> -->
+      </div>
     </div>
   </div>
+
 </nav>

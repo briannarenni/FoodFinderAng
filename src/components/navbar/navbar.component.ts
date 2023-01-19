@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Subject } from 'rxjs';
 import { RestaurantService } from '../../services/restaurant.service';
 import { Restaurant } from '../../models/Restaurant';
 import { TableService } from '../../services/table.service';
@@ -10,47 +11,67 @@ import { TableService } from '../../services/table.service';
 })
 
 export class NavbarComponent implements OnInit {
+  @Input() restaurants!: Restaurant[];
+  @Input() currTableList!: Restaurant[];
+  @Output() currTableListChange = new EventEmitter<Restaurant[]>();
   cuisines!: string[];
   cities!: string[];
   sortOptions!: string[];
   selectedCuisine!: string;
   selectedCity!: string;
   isDesc = false;
-  originalList!: Restaurant[];
-  @Input() restaurants!: Restaurant[];
-  @Input() currTableList!: Restaurant[];
-  @Output() currTableListChange = new EventEmitter<Restaurant[]>();
+  selectedSortOption!: string;
+  filterChanged = new Subject<void>();
 
   constructor(private restService: RestaurantService, private tableService: TableService) { }
 
   ngOnInit() {
     this.cuisines = ['American', 'Chinese', 'Greek', 'Italian', 'Mexican', 'Thai'];
     this.cities = ['Atlanta', 'Chicago', 'Houston', 'Los Angeles', 'Miami', 'New Orleans', 'New York City', 'Orlando', 'Portland', 'Seattle', 'San Diego', 'San Francisco'];
-    this.sortOptions = ['Default', 'Highest Rating', 'Lowest Rating'];
+    this.sortOptions = ['Name', 'Highest Rating', 'Lowest Rating'];
+    this.selectedSortOption = this.sortOptions[0];
+    this.filterChanged.subscribe(() => {
+      this.selectedSortOption = 'Name';
+    });
   }
+
   clearFilters() {
     this.selectedCuisine = '';
     this.selectedCity = '';
+    this.selectedSortOption = 'Name';
     this.currTableList = [...this.restaurants];
     this.currTableListChange.emit(this.currTableList);
   }
 
-  sortTable() {
-    this.isDesc = !this.isDesc;
-    if (!this.isDesc) {
-      this.currTableList = this.sortHighest(this.currTableList);
-    } else {
-      this.currTableList = this.sortLowest(this.currTableList);
+  sortTable(sortOption: string) {
+    this.selectedSortOption = sortOption;
+    if (sortOption === 'Highest Rating') {
+      this.sortRating(true);
+    } else if (sortOption === 'Lowest Rating') {
+      this.sortRating(false);
+    } else if (sortOption === 'Name') {
+      this.sortName();
     }
+  }
+
+  sortRating(isDesc: boolean) {
+    this.currTableList.sort((a, b) => {
+      if (isDesc) {
+        return b.Rating - a.Rating;
+      } else {
+        return a.Rating - b.Rating;
+      }
+    });
     this.currTableListChange.emit(this.currTableList);
   }
 
-  sortHighest(table: Restaurant[]): Restaurant[] {
-    return table.sort((a, b) => b.Rating - a.Rating);
-  }
-
-  sortLowest(table: Restaurant[]): Restaurant[] {
-    return table.sort((a, b) => a.Rating - b.Rating);
+  sortName() {
+    this.currTableList.sort((a, b) => {
+      if (a.RestName < b.RestName) return -1;
+      if (a.RestName > b.RestName) return 1;
+      return 0;
+    });
+    this.currTableListChange.emit(this.currTableList);
   }
 
   filterTable(type: 'cuisine' | 'city', value: string) {
@@ -71,6 +92,7 @@ export class NavbarComponent implements OnInit {
         this.currTableList = [...this.restaurants].filter(restaurant => restaurant.City === value);
       }
     }
+    this.filterChanged.next();
     this.currTableListChange.emit(this.currTableList);
   }
 
