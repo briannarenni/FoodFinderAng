@@ -46,12 +46,17 @@ export class NavbarComponent implements OnInit {
   sortTable(sortOption: string) {
     this.selectedSortOption = sortOption;
     if (sortOption === 'Highest Rating') {
-      this.sortRating(true);
+      this.currTableList.sort((a, b) => b.Rating - a.Rating);
     } else if (sortOption === 'Lowest Rating') {
-      this.sortRating(false);
+      this.currTableList.sort((a, b) => a.Rating - b.Rating);
     } else if (sortOption === 'Name') {
-      this.sortName();
+      this.currTableList.sort((a, b) => {
+        if (a.RestName < b.RestName) return -1;
+        if (a.RestName > b.RestName) return 1;
+        return 0;
+      });
     }
+    this.currTableListChange.emit(this.currTableList);
   }
 
   sortRating(isDesc: boolean) {
@@ -75,25 +80,30 @@ export class NavbarComponent implements OnInit {
   }
 
   filterTable(type: 'cuisine' | 'city', value: string) {
+    let filteredList = [...this.restaurants];
     if (type === 'cuisine') {
       if (this.selectedCuisine === value) {
         this.selectedCuisine = '';
-        this.currTableList = [...this.restaurants];
       } else {
         this.selectedCuisine = value;
-        this.currTableList = [...this.restaurants].filter(restaurant => restaurant.Cuisine === value);
       }
     } else if (type === 'city') {
       if (this.selectedCity === value) {
         this.selectedCity = '';
-        this.currTableList = [...this.restaurants];
       } else {
         this.selectedCity = value;
-        this.currTableList = [...this.restaurants].filter(restaurant => restaurant.City === value);
       }
     }
-    this.filterChanged.next();
-    this.currTableListChange.emit(this.currTableList);
+    if (this.selectedCuisine) {
+      filteredList = filteredList.filter(restaurant => restaurant.Cuisine === this.selectedCuisine);
+    }
+    if (this.selectedCity) {
+      filteredList = filteredList.filter(restaurant => restaurant.City === this.selectedCity);
+    }
+    this.currTableList = filteredList;
+    this.sortTable(this.selectedSortOption);
   }
+
+
 
 }
