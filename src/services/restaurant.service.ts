@@ -45,23 +45,5 @@ export class RestaurantService {
       );
   }
 
-  public sortByHighestRating(): Observable<Restaurant[]> {
-    return this.http.get<Restaurant[]>(`${ this.apiUrl }restaurants/rating`)
-      .pipe(
-        map(response => response.map(restaurant => {
-          return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Grade, restaurant.Rating);
-        }))
-      );
-  }
-
-  public sortByLowestRating(): Observable<Restaurant[]> {
-    return this.http.get<Restaurant[]>(`${ this.apiUrl }restaurants/rating-low`)
-      .pipe(
-        map(response => response.map(restaurant => {
-          return new Restaurant(restaurant.RestName, restaurant.Cuisine, restaurant.City, restaurant.Grade, restaurant.Rating);
-        }))
-      );
-  }
-
 }
 

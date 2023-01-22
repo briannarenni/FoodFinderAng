@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { RestaurantService } from '../../services/restaurant.service';
 import { TableService } from '../../services/table.service';
 import { Restaurant } from '../../models/Restaurant';
-import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-home',
