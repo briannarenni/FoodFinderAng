@@ -9,16 +9,17 @@ import { MenuItem } from '../models/MenuItem';
 })
 
 export class MenuService {
-  apiUrl: string;
+  localUrl!: 'http://localhost:5162';
   cuisines?: ['american', 'chinese', 'greek', 'italian', 'mexican', 'thai'];
   restCuisine?: string;
   menuItems?: MenuItem[];
+  apiUrl: string;
 
-  constructor(private http: HttpClient) { this.apiUrl = 'http://localhost:5162/'; }
+  constructor(private http: HttpClient) { this.apiUrl = 'https://foodfindernetapi.azurewebsites.net'; }
 
   public getCuisineMenu(cuisine: string): Observable<MenuItem[]> {
     const params = new HttpParams().set('cuisine', cuisine);
-    return this.http.get<MenuItem[]>(`${ this.apiUrl }menus/cuisine`, { params })
+    return this.http.get<MenuItem[]>(`${ this.apiUrl }/menus/cuisine`, { params })
       .pipe(
         map(response => response.map(menuItem => {
           const { ItemName, ItemPrice, ItemGroup } = menuItem;
