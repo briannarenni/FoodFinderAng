@@ -1,8 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
-import { RestaurantService } from '../../services/restaurant.service';
 import { Restaurant } from '../../models/Restaurant';
-import { TableService } from '../../services/table.service';
 
 @Component({
   selector: 'app-navbar',
@@ -23,7 +21,7 @@ export class NavbarComponent implements OnInit {
   selectedSortOption!: string;
   filterChanged = new Subject<void>();
 
-  constructor(private restService: RestaurantService, private tableService: TableService) { }
+  constructor() { }
 
   ngOnInit() {
     this.cuisines = ['American', 'Chinese', 'Greek', 'Italian', 'Mexican', 'Thai'];
@@ -56,26 +54,6 @@ export class NavbarComponent implements OnInit {
         return 0;
       });
     }
-    this.currTableListChange.emit(this.currTableList);
-  }
-
-  sortRating(isDesc: boolean) {
-    this.currTableList.sort((a, b) => {
-      if (isDesc) {
-        return b.Rating - a.Rating;
-      } else {
-        return a.Rating - b.Rating;
-      }
-    });
-    this.currTableListChange.emit(this.currTableList);
-  }
-
-  sortName() {
-    this.currTableList.sort((a, b) => {
-      if (a.RestName < b.RestName) return -1;
-      if (a.RestName > b.RestName) return 1;
-      return 0;
-    });
     this.currTableListChange.emit(this.currTableList);
   }
 
